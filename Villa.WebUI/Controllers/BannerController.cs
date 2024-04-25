@@ -45,7 +45,6 @@ namespace Villa.WebUI.Controllers
             var newBanner = _mapper.Map<Banner>(createBannerDto);
             await _bannerService.TCreateAsync(newBanner);
             return RedirectToAction("Index");
-
         }
 
         public async Task<IActionResult> UpdateBanner(ObjectId id)

@@ -28,7 +28,7 @@ namespace Villa.Business.Concrete
 
         public async Task TCreateAsync(T entity)
         {
-            await _genericDal.CountAsync();
+            await _genericDal.CreateAsync(entity);
         }
 
         public async Task TDeleteAsync(ObjectId id)
