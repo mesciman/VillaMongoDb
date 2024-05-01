@@ -61,5 +61,12 @@ namespace Villa.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> MessageDetails(ObjectId id)
+        {
+            var value = await _messageService.TGetByIdAsync(id);
+            var viewMessage = _mapper.Map<ResultMessageDto>(value);
+            return View(viewMessage);
+        }
+
     }
 }

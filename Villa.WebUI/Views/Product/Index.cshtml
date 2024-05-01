@@ -1,6 +1,6 @@
-﻿@model List<ResultDealDto>
+﻿@model List<ResultProductDto>
 @{
-    ViewData["Title"] = "Teklif Listesi";
+    ViewData["Title"] = "Mülk Listele";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,15 +10,15 @@
     }
     <tr>
         <th>#</th>
-        <th>Tür</th>
         <th>Görsel</th>
+        <th>Kategori</th>
+        <th>Fiyat</th>
         <th>Başlık</th>
-        <th>Açıklama</th>
-        <th>m2</th>
+        <th>yatak odası</th>
+        <th>Banyo</th>
+        <th>Alan</th>
         <th>Kat</th>
-        <th>Oda</th>
-        <th>Park Alanı</th>
-        <th>Ödeme</th>
+        <th>Park yeri</th>
         <th>İşlemler</th>
     </tr>
     @foreach (var item in Model)
@@ -26,29 +26,28 @@
         count++;
         <tr>
             <td>@count</td>
-            <td>@item.Type</td>
-            <td>@item.ImageUrl</td>
+            <td><img src="@item.ImageUrl" style="width:50px" /></td>
+            <td>@item.Category</td>
+            <td>@item.Price</td>
             <td>@item.Title</td>
-            <td>@(item.Description.Length > 50 ? item.Description.Substring(0, 50) + "..." : item.Description)</td>
-            <td>@item.Square</td>
-            <td>@item.Flour</td>
-            <td>@item.RoomCount</td>
-            <td>@(item.HasParkingArea ? "Var" : "Yok")</td>
-            <td>@item.PaymentType</td>
+            <td>@item.BedroomCount</td>
+            <td>@item.BathroomCount</td>
+            <td>@item.Area</td>
+            <td>@item.Floor</td>
+            <td>@item.ParkingCount</td>
             <td>
-                <button onclick="deleteDeal(this)" id="@item.Id" class="btn btn-outline-danger">Sil</button>
-                <a asp-controller="Deal" asp-action="UpdateDeal" asp-route-id="@item.Id" class="btn btn-outline-info">Düzenle</a>
+                <button onclick="deleteProduct(this)" id="@item.Id" class="btn btn-outline-danger">Sil</button>
+                <a asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@item.Id" class="btn btn-outline-info">Düzenle</a>
             </td>
         </tr>
     }
 </table>
 
-<a asp-controller="Deal" asp-action="CreateDeal" class="btn btn-outline-dark">Yeni Teklif Ekle</a>
-
+<a asp-controller="Product" asp-action="CreateProduct" class="btn btn-outline-dark">Yeni Mülk Ekle</a>
 
 <script>
 
-    function deleteDeal(button) {
+    function deleteProduct(button) {
         var id = button.getAttribute("id");
         Swal.fire({
             title: "Emin misiniz?",
@@ -61,7 +60,7 @@
             cancelButtonText: "Vazgeç"
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/Deal/DeleteDeal/" + id;
+                window.location.href = "/Product/DeleteProduct/" + id;
                 // Swal.fire({
                 //     title: "Silindi!",
                 //     text: "Dosyanız silindi.",

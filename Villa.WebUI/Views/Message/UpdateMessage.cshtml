@@ -1,0 +1,28 @@
+﻿@model UpdateMessageDto
+@{
+    ViewData["Title"] = "Mesaj Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>İsim</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+
+    <label>Email</label>
+    <input type="text" asp-for="Email" class="form-control" />
+    <br />
+
+
+    <label>Konu</label>
+    <input type="text" asp-for="Subject" class="form-control" />
+    <br />
+
+
+    <label>İçerik</label>
+    <textarea asp-for="MessageContent" class="form-control" rows="10"></textarea>
+    <br />
+
+    <button class="btn btn-outline-dark">Kaydet</button>
+</form>

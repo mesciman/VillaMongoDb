@@ -1,0 +1,42 @@
+﻿@model UpdateFeatureDto
+@{
+    ViewData["Title"] = "Öne Çıkan Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>Image Url</label>
+    <input type="text" asp-for="ImageUrl" class="form-control" />
+    <br />
+
+    <label>Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+
+    <label>Alt Başlık</label>
+    <input type="text" asp-for="SubTitle" class="form-control" />
+    <br />
+
+
+    <label>m2</label>
+    <input type="text" asp-for="Square" class="form-control" />
+    <br />
+
+
+    <label>Kontrat</label>
+    <input type="text" asp-for="Contract" class="form-control" />
+    <br />
+
+
+    <label>Ödeme</label>
+    <input type="text" asp-for="Payment" class="form-control" />
+    <br />
+
+
+    <label>Güvenlik</label>
+    <input type="text" asp-for="Safety" class="form-control" />
+    <br />
+
+    <button class="btn btn-outline-dark">Kaydet</button>
+</form>

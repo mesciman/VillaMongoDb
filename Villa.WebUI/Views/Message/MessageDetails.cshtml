@@ -1,0 +1,33 @@
+﻿@model ResultMessageDto
+@{
+    ViewData["Title"] = "Mesaj Detayı";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Mesaj Detayı</h2>
+
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+        <th>İsim</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Konu</th>
+        <td>@Model.Subject</td>
+    </tr>
+    <tr>
+        <th>İçerik</th>
+        <td>@Model.MessageContent</td>
+    </tr>
+    <tr>
+        <th>Tarih</th>
+        <td>@Model.MessageDate</td>
+    </tr>
+
+</table>
+
+<a asp-controller="Message" asp-action="Index" class="btn btn-outline-dark">Mesaj Listesi</a>
