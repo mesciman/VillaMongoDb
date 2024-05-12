@@ -1,0 +1,93 @@
+﻿@model List<ResultDealDto>
+@{
+    int count = 0;
+    int countcontent = 0;
+    string active = "";
+
+}
+<div class="section best-deal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="section-heading">
+                    <h6>| Best Deal</h6>
+                    <h2>Find Your Best Deal Right Now!</h2>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="tabs-content">
+                    <div class="row">
+                        <div class="nav-wrapper ">
+                            <ul class="nav nav-tabs" role="tablist">
+
+                                @foreach (var item in Model)
+
+                                {
+                                    count++;
+                                    if (count == 1)
+                                    {
+                                        active = "active";
+                                    }
+                                    else
+                                    {
+                                        active = "";
+                                    }
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link @active" id="@item.Type-tab" data-bs-toggle="tab" data-bs-target="#@item.Type" type="button" role="tab" aria-controls="@item.Type" aria-selected="true">@item.Type</button>
+                                    </li>
+                                }
+
+
+                            </ul>
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+
+                            @foreach (var item in Model)
+                            {
+                                countcontent++;
+                                if (countcontent == 1)
+                                {
+                                    active = "active";
+                                }
+                                else
+                                {
+                                    active = "";
+                                }
+
+
+                                <div class="tab-pane fade show @active" id="@item.Type" role="tabpanel" aria-labelledby="@item.Type-tab">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <div class="info-table">
+                                                <ul>
+                                                    <li>m2 <span>@item.Square</span></li>
+                                                    <li>Kat <span>@item.Flour</span></li>
+                                                    <li>Oda <span>@item.RoomCount</span></li>
+                                                    <li>Park <span>@(item.HasParkingArea ? "Var" : "Yok")</span></li>
+                                                    <li>Ödeme <span>@item.PaymentType</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <img src="~/@item.ImageUrl" alt="">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <h4>@item.Title</h4>
+                                            <p>
+                                                @item.Description
+                                            </p>
+                                            <div class="icon-button">
+                                                <a href="#"><i class="fa fa-calendar"></i> Ziyaret Planlayın</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
